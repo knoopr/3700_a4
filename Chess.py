@@ -400,5 +400,6 @@ class Chess_Player():
 if __name__ == "__main__":
     first_Player = raw_input()
     result =  Chess_Player(first_Player,first_Player, goal_Depth=3, alpha_Beta=[((None), -maxint), ((None), maxint)]).Play_game()
+    
 
-    print str(result[0][0][0]) + "," + str(result[0][0][1]) + "-" + str(result[0][1][0]) + "," + str(result[0][1][0])
+    print str(result[0][0][0]) + "," + str(result[0][0][1]) + "-" + str(result[0][1][0]) + "," + str(result[0][1][1])
