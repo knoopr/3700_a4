@@ -47,11 +47,22 @@ class Chess_Player():
                     del self.player_Pieces[end]
                     self.player_Pieces[start] = p_Piece
                     
-                    if resultant_Score[1] != None and resultant_Score[1] > self.alpha[1]:
-                        self.alpha = ((start,end), resultant_Score[1])
-                        if self.beta[1] < self.alpha[1]:
-                            break
-                return self.alpha
+                    if self.max == self.player:
+                        if resultant_Score[1] != None and resultant_Score[1] > self.alpha[1]:
+                            self.alpha = ((start,end), resultant_Score[1])
+                            if self.beta[1] < self.alpha[1]:
+                                break
+                    else:
+                        resultant_Score = (resultant_Score[0], -resultant_Score[1])
+                        if resultant_Score[1] != None and resultant_Score[1] < self.beta[1]:
+                            self.beta = ((start,end), resultant_Score[1])
+                            if self.beta[1] < self.alpha[1]:
+                                break
+            
+                if self.max == self.player:
+                    return self.alpha
+                else:
+                    return self.beta
             else:
                 for start, end in self.must_Take:
                     p_Piece = self.player_Pieces[start]
@@ -61,16 +72,29 @@ class Chess_Player():
                     del self.opponent_Pieces[end]
                     
                     resultant_Score = Chess_Player(self.opponent, self.max, (self.player_Pieces, self.opponent_Pieces), self.depth-1, (self.alpha, self.beta)).Play_game()
-                    
+                    resultant_Score =(resultant_Score[0], -resultant_Score[1])
+                    print resultant_Score
                     del self.player_Pieces[end]
                     self.player_Pieces[start] = p_Piece
                     self.opponent_Pieces[end] = o_Piece
 
-                    if resultant_Score[1] != None and resultant_Score[1] < self.beta[1]:
-                        self.beta = ((start,end), resultant_Score[1])
-                        if self.beta[1] < self.alpha[1]:
-                            break
-                return self.beta
+                    if self.max == self.player:
+                        if resultant_Score[1] != None and resultant_Score[1] > self.alpha[1]:
+                            self.alpha = ((start,end), resultant_Score[1])
+                            if self.beta[1] < self.alpha[1]:
+                                break
+                    else:
+                        resultant_Score = (resultant_Score[0], -resultant_Score[1])
+                        if resultant_Score[1] != None and resultant_Score[1] < self.beta[1]:
+                            self.beta = ((start,end), resultant_Score[1])
+                            if self.beta[1] < self.alpha[1]:
+                                break
+                                    
+                if self.max == self.player:
+                    return self.alpha
+                else:
+                    return self.beta
+
 
 
 
