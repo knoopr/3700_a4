@@ -115,8 +115,8 @@ class Chess_Player():
             elif piece.lower() == "q":
                 self.Check_bishop(y,x)
                 self.Check_rook(y,x)
-            """elif piece.lower() == "k":
-                self.Check_king(y,x)"""
+            elif piece.lower() == "k":
+                self.Check_king(y,x)
 
 
 
@@ -294,14 +294,14 @@ class Chess_Player():
                 self.other_Moves.append(((y,x),(y+1,x)))
             
             if (y+1,x+1) in self.opponent_Pieces:
-                self.must_Take.append(((y,x),(y+1,x)))
+                self.must_Take.append(((y,x),(y+1,x+1)))
             elif (y+1,x+1) not in self.player_Pieces and x+1 <= 7:
-                self.other_Moves.append(((y,x),(y+1,x)))
-
+                self.other_Moves.append(((y,x),(y+1,x+1)))
+            
             if (y+1,x-1) in self.opponent_Pieces:
-                self.must_Take.append(((y,x),(y+1,x)))
+                self.must_Take.append(((y,x),(y+1,x-1)))
             elif (y+1,x-1) not in self.player_Pieces and x-1 >= 0:
-                self.other_Moves.append(((y,x),(y+1,x)))
+                self.other_Moves.append(((y,x),(y+1,x-1)))
         elif y-1 >= 0:
             if (y-1,x) in self.opponent_Pieces:
                 self.must_Take.append(((y,x),(y-1,x)))
@@ -309,14 +309,14 @@ class Chess_Player():
                 self.other_Moves.append(((y,x),(y-1,x)))
             
             if (y-1,x+1) in self.opponent_Pieces:
-                self.must_Take.append(((y,x),(y-1,x)))
+                self.must_Take.append(((y,x),(y-1,x+1)))
             elif (y-1,x+1) not in self.player_Pieces and x+1 <= 7:
-                self.other_Moves.append(((y,x),(y-1,x)))
+                self.other_Moves.append(((y,x),(y-1,x+1)))
             
             if (y-1,x-1) in self.opponent_Pieces:
-                self.must_Take.append(((y,x),(y-1,x)))
+                self.must_Take.append(((y,x),(y-1,x-1)))
             elif (y-1,x-1) not in self.player_Pieces and x-1 >= 0:
-                self.other_Moves.append(((y,x),(y-1,x)))
+                self.other_Moves.append(((y,x),(y-1,x-1)))
 
 
 
