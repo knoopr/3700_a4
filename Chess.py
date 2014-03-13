@@ -72,8 +72,6 @@ class Chess_Player():
                     del self.opponent_Pieces[end]
                     
                     resultant_Score = Chess_Player(self.opponent, self.max, (self.player_Pieces, self.opponent_Pieces), self.depth-1, (self.alpha, self.beta)).Play_game()
-                    resultant_Score =(resultant_Score[0], -resultant_Score[1])
-                    print resultant_Score
                     del self.player_Pieces[end]
                     self.player_Pieces[start] = p_Piece
                     self.opponent_Pieces[end] = o_Piece
