@@ -40,7 +40,13 @@ class Chess_Player():
                 for start, end in self.other_Moves:
                     p_Piece = self.player_Pieces[start]
                     del self.player_Pieces[start]
-                    self.player_Pieces[end] = p_Piece
+                    
+                    if start[0] == 0 and p_Piece == "p":
+                        self.player_Pieces[end] = "q"
+                    elif start[0] == 7 and p_Piece == "P":
+                        self.player_Pieces[end] = "Q"
+                    else:
+                        self.player_Pieces[end] = p_Piece
                     
                     resultant_Score = Chess_Player(self.opponent, self.max, (self.player_Pieces, self.opponent_Pieces), self.depth-1, (self.alpha, self.beta)).Play_game()
                     
@@ -68,7 +74,14 @@ class Chess_Player():
                     p_Piece = self.player_Pieces[start]
                     o_Piece = self.opponent_Pieces[end]
                     del self.player_Pieces[start]
-                    self.player_Pieces[end] = p_Piece
+                    
+                    if start[0] == 0 and p_Piece == "p":
+                        self.player_Pieces[end] = "q"
+                    elif start[0] == 7 and p_Piece == "P":
+                        self.player_Pieces[end] = "Q"
+                    else:
+                        self.player_Pieces[end] = p_Piece
+                    
                     del self.opponent_Pieces[end]
                     
                     resultant_Score = Chess_Player(self.opponent, self.max, (self.player_Pieces, self.opponent_Pieces), self.depth-1, (self.alpha, self.beta)).Play_game()
@@ -402,4 +415,4 @@ if __name__ == "__main__":
     result =  Chess_Player(first_Player,first_Player, goal_Depth=3, alpha_Beta=[((None), -maxint), ((None), maxint)]).Play_game()
     
 
-    print str(result[0][0][0]) + "," + str(result[0][0][1]) + "-" + str(result[0][1][0]) + "," + str(result[0][1][1])
+    print str(result[0][0][1]) + "," + str(result[0][0][0]) + "-" + str(result[0][1][1]) + "," + str(result[0][1][0])
