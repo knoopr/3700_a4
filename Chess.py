@@ -257,6 +257,30 @@ class Chess_Player():
             else:
                 self.other_Moves.append(((y,x),(y,px)))
 
+        for py in range (1,8):
+            py = y-py
+            if py < 0:
+                break
+            print py
+            if (py, x) in self.player_Pieces:
+                break
+            elif (py, x) in self.opponent_Pieces:
+                self.must_Take.append(((y,x),(py,x)))
+                break
+            else:
+                self.other_Moves.append(((y,x),(py,x)))
+        for px in range (1,8):
+            px = x-px
+            if px > 0:
+                break
+            if (y, px) in self.player_Pieces:
+                break
+            elif (y, px) in self.opponent_Pieces:
+                self.must_Take.append(((y,x),(y,px)))
+                break
+            else:
+                self.other_Moves.append(((y,x),(y,px)))
+
 
     def Check_bishop(self, y, x):
         px = x
