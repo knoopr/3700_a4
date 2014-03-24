@@ -261,7 +261,6 @@ class Chess_Player():
             py = y-py
             if py < 0:
                 break
-            print py
             if (py, x) in self.player_Pieces:
                 break
             elif (py, x) in self.opponent_Pieces:
