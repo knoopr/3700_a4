@@ -23,6 +23,12 @@ class Chess_Player():
                 count += 1
         
             self.index_Pieces(the_Board)
+            
+            time_Used = raw_input()
+            total_Time = raw_input()
+            if int(time_Used) > 1000:
+                if int(time_Used) < (int(total_Time)/3)*2:
+                    self.depth += 1
         else:
             self.player_Pieces = given_Indexes[1]
             self.opponent_Pieces = given_Indexes[0]
@@ -270,7 +276,7 @@ class Chess_Player():
                 self.other_Moves.append(((y,x),(py,x)))
         for px in range (1,8):
             px = x-px
-            if px > 0:
+            if px < 0:
                 break
             if (y, px) in self.player_Pieces:
                 break
@@ -434,8 +440,11 @@ class Chess_Player():
 
 
 if __name__ == "__main__":
+    a = datetime.datetime.now()
     first_Player = raw_input()
     result =  Chess_Player(first_Player,first_Player, goal_Depth=3, alpha_Beta=[((None), -maxint), ((None), maxint)]).Play_game()
     
 
     print str(result[0][0][1]) + "," + str(result[0][0][0]) + "-" + str(result[0][1][1]) + "," + str(result[0][1][0])
+    b = datetime.datetime.now()
+    print b-a

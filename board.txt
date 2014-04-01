@@ -1,12 +1,11 @@
 B
 RNBQKBNR
-PPPPPP P
+PP PP P 
+  P  P P
         
-      P 
-     p   
-n       
-ppppp pp
-r bqkbnr
-179
+        
+pp      
+ rpppppp 
+ nbqkbnr
+3000
 60000
-3
