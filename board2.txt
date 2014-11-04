@@ -1,0 +1,12 @@
+W
+RNBQKBNR
+PPPPPP P  
+      P  
+        
+        
+n        
+pppqpppp   
+r b kbnr
+179
+60000
+3
